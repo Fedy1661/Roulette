@@ -1,93 +1,108 @@
 import React, { Component, Fragment } from 'react';
-import {
-  BlackCat,
-  RedCat,
-  WhiteCat,
-  Pencils,
-  CowBrown,
-  CowWhite,
-  Pig,
-  Cigarette,
-  PackOfCigarettes,
-  Champange,
-  Corkscrew,
-  Grapes,
-  Modem,
-  Money,
-  MoneyBag,
-  Scooter,
-} from '../items';
-const cats = [
-  { component: <BlackCat />, name: 'Чёрная кошка' },
-  { component: <WhiteCat />, name: 'Белая кошка' },
-  { component: <RedCat />, name: 'Красная кошка' },
-  { component: <Pencils />, name: 'Принадлежности' },
-  { component: <CowBrown />, name: 'Коричневая корова' },
-  { component: <CowWhite />, name: 'Белая корова' },
-  { component: <Pig />, name: 'Свинья' },
-  { component: <Cigarette />, name: 'Сигарета' },
-  { component: <PackOfCigarettes />, name: 'Пачка сигарет' },
-  { component: <Champange />, name: 'Шампанское' },
-  { component: <Corkscrew />, name: 'Штопор' },
-  { component: <Grapes />, name: 'Виноград' },
-  { component: <Modem />, name: 'Модем' },
-  { component: <Money />, name: 'Купюра 100$' },
-  { component: <MoneyBag />, name: 'Мешок с 100.000$' },
-  { component: <Scooter />, name: 'Скутер' }
-];
+import { generateRoulette, rouletteScrolled } from '../../actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
   state = {
-    items: [],
-    spin: false
+    openModalWithPrize: false,
+    openModalInventory: false
   };
-  rouletteScrollWidth = React.createRef();
-  generateRoullete = spin => {
-    let items = [...this.state.items];
-    const count = spin ? 15 : 3;
-    for (let i = 0; i < count; i++) {
-      const item = cats[Math.floor(Math.random() * cats.length)];
-      items.push(item);
-    }
-    this.setState({ items, spin });
+  modal = (title, info, stateModal) => {
+    return (
+      <>
+        <div className="overlay">
+          <div className="modal">
+            <div className="modal__title">{title}</div>
+            <div className="modal__info">{info}</div>
+            <button
+              onClick={() => this.setState({ [stateModal]: false })}
+              className="modal__btn btn"
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </>
+    );
   };
-  componentDidMount() {
-    this.generateRoullete(false);
-  }
-
   render() {
-    const { items, spin } = this.state;
-    console.log(items);
+    const {
+      items,
+      spin,
+      generateRoulette,
+      rouletteScrolled,
+      inventory
+    } = this.props;
+    const { openModalWithPrize, openModalInventory } = this.state;
     const roulette = items
       ? items.map(({ component }, key) => {
           return <Fragment key={key}>{component}</Fragment>;
         })
       : null;
+    const prize =
+      openModalWithPrize &&
+      this.modal(
+        `Вы выиграли "${inventory[inventory.length - 1].name}"`,
+        inventory[inventory.length - 1].component,
+        'openModalWithPrize'
+      );
+    if (spin) {
+      setTimeout(() => {
+        rouletteScrolled();
+        this.setState({ openModalWithPrize: true });
+      }, 4000);
+    }
     return (
       <div className="container">
         <div className="roulette">
-          <div
-            ref={this.rouletteScrollWidth}
-            className={`items ${spin ? 'items_active' : ''}`}
-          >
+          <div className={`items ${spin ? 'items_active' : ''}`}>
             {roulette}
           </div>
         </div>
-        <button
-          onClick={() => {
-            this.generateRoullete(true);
-          }}
-          className="btn"
-        >
-          Крутить
-        </button>
-        {spin === true && (
-          <h2 className="prise">
-            Вы выиграли "{items[items.length - 2].name}"
-          </h2>
-        )}
+        <div className="roulette__buttons">
+          <button
+            onClick={spin ? null : generateRoulette}
+            className={`btn ${spin ? 'btn_disabled' : ''}`}
+          >
+            Крутить
+          </button>
+          <button
+            onClick={
+              inventory.length !== 0
+                ? () => this.setState({ openModalInventory: true })
+                : null
+            }
+            className={`btn ${inventory.length === 0 ? 'btn_disabled' : ''}`}
+          >
+            Инвентарь
+          </button>
+        </div>
+        {prize}
+        {openModalInventory &&
+          this.modal(
+            `Инвентарь`,
+            <div className="modal__components">
+              {inventory.map(value => {
+                return (
+                  <div className="modal__block">
+                    <div className="modal__component">{value.component}</div>
+                    <div className="modal__descr">{value.name}</div>
+                  </div>
+                );
+              })}
+            </div>,
+            'openModalInventory'
+          )}
       </div>
     );
   }
 }
-export default App;
+const mapStateToProps = ({ spin, items, wonItem, inventory }) => {
+  return { spin, items, wonItem, inventory };
+};
+const mapDispatchToProps = {
+  generateRoulette,
+  rouletteScrolled
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -5,7 +5,7 @@ export default () => {
     <img
       src="https://image.flaticon.com/icons/svg/1076/1076267.svg"
       alt="Coffee shop"
-      className="cat"
+      className="item"
     />
   );
 };
