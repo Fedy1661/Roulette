@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CowWhite = () => {
+export default () => {
   return (
     <img
       src="https://image.flaticon.com/icons/svg/2503/2503053.svg"
@@ -9,5 +9,3 @@ const CowWhite = () => {
     />
   );
 };
-
-export default CowWhite;

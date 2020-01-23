@@ -6,7 +6,17 @@ import {
   Pencils,
   CowBrown,
   CowWhite,
-  Pig
+  Pig,
+  Cigarette,
+  PackOfCigarettes,
+  Champange,
+  Corkscrew,
+  Grapes,
+  Modem,
+  Money,
+  MoneyBag,
+  Scooter,
+  Wine
 } from '../items';
 const cats = [
   { component: <BlackCat />, name: 'Чёрная кошка' },
@@ -15,7 +25,16 @@ const cats = [
   { component: <Pencils />, name: 'Принадлежности' },
   { component: <CowBrown />, name: 'Коричневая корова' },
   { component: <CowWhite />, name: 'Белая корова' },
-  { component: <Pig />, name: 'Свинья' }
+  { component: <Pig />, name: 'Свинья' },
+  { component: <Cigarette />, name: 'Сигарета' },
+  { component: <PackOfCigarettes />, name: 'Пачка сигарет' },
+  { component: <Champange />, name: 'Шампанское' },
+  { component: <Corkscrew />, name: 'Штопор' },
+  { component: <Grapes />, name: 'Виноград' },
+  { component: <Modem />, name: 'Модем' },
+  { component: <Money />, name: 'Купюра 100$' },
+  { component: <MoneyBag />, name: 'Мешок с 100.000$' },
+  { component: <Scooter />, name: 'Скутер' },
 ];
 
 class App extends Component {
