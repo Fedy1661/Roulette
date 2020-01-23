@@ -1,7 +1,6 @@
 import React from 'react';
-import { withItem } from '../HOC-helper';
 
-const RedCat = () => {
+export default () => {
   return (
     <img
       className="cat"
@@ -10,4 +9,3 @@ const RedCat = () => {
     />
   );
 };
-export default withItem(RedCat);
