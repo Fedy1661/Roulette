@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Roulette/static/css/main.b703202d.chunk.css",
+    "main.js": "/Roulette/static/js/main.845269c6.chunk.js",
+    "main.js.map": "/Roulette/static/js/main.845269c6.chunk.js.map",
+    "runtime-main.js": "/Roulette/static/js/runtime-main.717b1951.js",
+    "runtime-main.js.map": "/Roulette/static/js/runtime-main.717b1951.js.map",
+    "static/js/2.1bc70978.chunk.js": "/Roulette/static/js/2.1bc70978.chunk.js",
+    "static/js/2.1bc70978.chunk.js.map": "/Roulette/static/js/2.1bc70978.chunk.js.map",
+    "index.html": "/Roulette/index.html",
+    "precache-manifest.cbd75f97d9b07d5b570ddd15295e013e.js": "/Roulette/precache-manifest.cbd75f97d9b07d5b570ddd15295e013e.js",
+    "service-worker.js": "/Roulette/service-worker.js",
+    "static/css/main.b703202d.chunk.css.map": "/Roulette/static/css/main.b703202d.chunk.css.map",
+    "static/js/2.1bc70978.chunk.js.LICENSE": "/Roulette/static/js/2.1bc70978.chunk.js.LICENSE",
+    "static/media/pencils.svg": "/Roulette/static/media/pencils.a0867292.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.717b1951.js",
+    "static/js/2.1bc70978.chunk.js",
+    "static/css/main.b703202d.chunk.css",
+    "static/js/main.845269c6.chunk.js"
+  ]
+}
