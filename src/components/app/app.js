@@ -42,8 +42,8 @@ class App extends Component {
     const prize =
       openModalWithPrize &&
       this.modal(
-        `Вы выиграли "${inventory[inventory.length - 1].name}"`,
-        inventory[inventory.length - 1].component,
+        `Вы выиграли "${inventory[0].name}"`,
+        inventory[0].component,
         'openModalWithPrize'
       );
     if (spin) {
@@ -68,11 +68,13 @@ class App extends Component {
           </button>
           <button
             onClick={
-              inventory.length !== 0
+              inventory.length !== 0 && spin !== true
                 ? () => this.setState({ openModalInventory: true })
                 : null
             }
-            className={`btn ${inventory.length === 0 ? 'btn_disabled' : ''}`}
+            className={`btn ${
+              inventory.length === 0 || spin === true ? 'btn_disabled' : ''
+            }`}
           >
             Инвентарь
           </button>
@@ -81,16 +83,13 @@ class App extends Component {
         {openModalInventory &&
           this.modal(
             `Инвентарь`,
-            <div className="modal__components">
-              {inventory.map(value => {
-                return (
-                  <div className="modal__block">
-                    <div className="modal__component">{value.component}</div>
-                    <div className="modal__descr">{value.name}</div>
-                  </div>
-                );
-              })}
-            </div>,
+            inventory.map(value => {
+              return (
+                <div className="modal__name">
+                  {value.name} {value.amount > 2 ? `(${value.amount})` : null}
+                </div>
+              );
+            }),
             'openModalInventory'
           )}
       </div>

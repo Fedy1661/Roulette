@@ -39,11 +39,6 @@ body {
   height: 200px;
   padding: 0 20px;
 }
-.item {
-  /* min-width: 300px;
-  height: 200px;
-  padding: 0 20px; */
-}
 
 .btn {
   text-decoration: none;
@@ -95,7 +90,7 @@ body {
   }
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -110,7 +105,7 @@ body {
   flex-direction: column;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  position: absolute;
+  position: fixed;
   border-radius: 15px;
   left: 50%;
   top: 50%;
@@ -119,6 +114,9 @@ body {
   z-index: 0;
   padding-bottom: 10px;
   animation: Emergence 2s;
+  display: flex;
+  justify-content: space-between;
+  min-width: 300px;
 }
 .modal__btn {
   margin-top: 10px;
@@ -133,14 +131,21 @@ body {
 }
 .modal__components {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
 }
 .modal .item {
   max-width: 200px;
 }
 .modal .modal__component .item {
-  max-width: 100px;
+  max-width: 300px;
+  max-height: 200px;
+}
+.modal__block {
+  width: 400px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .modal__info {
   margin-top: 10px;

@@ -46,6 +46,16 @@ const generateRoulette = count => {
   return arr;
 };
 
+const findNameItem = (inv, itemName) => {
+  let find = false;
+  inv.forEach(({ name }, key) => {
+    if (name === itemName) {
+      find = key;
+    }
+  });
+  return find;
+};
+
 const initialState = {
   items: [...generateRoulette(3)],
   spin: false,
@@ -57,20 +67,37 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case GENERATE_ROULETTE:
       const arr = [...state.items, ...generateRoulette(15)];
-      const wonItem = arr[arr.length - 2];
+      let wonItem = arr[arr.length - 2];
+      const findName = findNameItem(state.inventory, wonItem.name);
+      const wonItemIndex =
+        findName !== false ? findName : state.inventory.length;
+      if (findName !== false) {
+        wonItem = state.inventory[wonItemIndex];
+        wonItem.amount += 1;
+      } else {
+        wonItem.amount = 1;
+      }
       if (state.spin === false) {
         return {
           ...state,
           items: arr,
           spin: !state.spin,
-          inventory: [...state.inventory, wonItem],
+          inventory: [
+            wonItem,
+            ...state.inventory.slice(0, wonItemIndex),
+            ...state.inventory.slice(wonItemIndex + 1)
+          ],
           wonItem
         };
       } else {
         return {
           ...state,
           items: arr,
-          inventory: [...state.inventory, wonItem],
+          inventory: [
+            wonItem,
+            ...state.inventory.slice(0, wonItemIndex),
+            ...state.inventory.slice(wonItemIndex + 1)
+          ],
           wonItem
         };
       }
