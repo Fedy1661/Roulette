@@ -7,7 +7,7 @@ class App extends Component {
     openModalWithPrize: false,
     openModalInventory: false
   };
-  modal = (title, info, stateModal) => {
+  modal = title => info => stateModal => {
     return (
       <>
         <div className="overlay">
@@ -41,9 +41,7 @@ class App extends Component {
       : null;
     const prize =
       openModalWithPrize &&
-      this.modal(
-        `Вы выиграли "${inventory[0].name}"`,
-        inventory[0].component,
+      this.modal(`Вы выиграли "${inventory[0].name}"`)(inventory[0].component)(
         'openModalWithPrize'
       );
     if (spin) {
@@ -55,6 +53,11 @@ class App extends Component {
     return (
       <div className="container">
         <div className="roulette">
+          <img
+            src="https://image.flaticon.com/icons/svg/892/892623.svg"
+            alt="arrow"
+            className="roulette__arrow-down"
+          ></img>
           <div className={`items ${spin ? 'items_active' : ''}`}>
             {roulette}
           </div>
@@ -81,17 +84,15 @@ class App extends Component {
         </div>
         {prize}
         {openModalInventory &&
-          this.modal(
-            `Инвентарь`,
+          this.modal('Инвентарь')(
             inventory.map(value => {
               return (
                 <div className="modal__name">
                   {value.name} {value.amount > 2 ? `(${value.amount})` : null}
                 </div>
               );
-            }),
-            'openModalInventory'
-          )}
+            })
+          )('openModalInventory')}
       </div>
     );
   }

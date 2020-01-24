@@ -156,3 +156,12 @@ body {
   margin: 0 auto;
   margin-top: 10px;
 }
+.roulette__arrow-down {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 35px;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+}
