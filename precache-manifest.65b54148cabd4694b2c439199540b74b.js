@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a63dffd8f97c9bfbf672e78d3ed0e01c",
+    "revision": "88064bbb9c22c9f7052b77b49d387e8d",
     "url": "/Roulette/index.html"
   },
   {
-    "revision": "af286666d337ec2eca68",
-    "url": "/Roulette/static/css/main.b7811ef9.chunk.css"
+    "revision": "3bf8b97263299e41a434",
+    "url": "/Roulette/static/css/main.3eb2ea4a.chunk.css"
   },
   {
     "revision": "51bf41f937b24acdb634",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Roulette/static/js/2.67f51ea6.chunk.js.LICENSE"
   },
   {
-    "revision": "af286666d337ec2eca68",
-    "url": "/Roulette/static/js/main.eec0505a.chunk.js"
+    "revision": "3bf8b97263299e41a434",
+    "url": "/Roulette/static/js/main.e17b6060.chunk.js"
   },
   {
     "revision": "bb15c4af8fcd5b3de5ba",

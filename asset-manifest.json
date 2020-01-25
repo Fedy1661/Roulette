@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Roulette/static/css/main.b7811ef9.chunk.css",
-    "main.js": "/Roulette/static/js/main.eec0505a.chunk.js",
-    "main.js.map": "/Roulette/static/js/main.eec0505a.chunk.js.map",
+    "main.css": "/Roulette/static/css/main.3eb2ea4a.chunk.css",
+    "main.js": "/Roulette/static/js/main.e17b6060.chunk.js",
+    "main.js.map": "/Roulette/static/js/main.e17b6060.chunk.js.map",
     "runtime-main.js": "/Roulette/static/js/runtime-main.717b1951.js",
     "runtime-main.js.map": "/Roulette/static/js/runtime-main.717b1951.js.map",
     "static/js/2.67f51ea6.chunk.js": "/Roulette/static/js/2.67f51ea6.chunk.js",
     "static/js/2.67f51ea6.chunk.js.map": "/Roulette/static/js/2.67f51ea6.chunk.js.map",
     "index.html": "/Roulette/index.html",
-    "precache-manifest.16b6426acaa870dd658df8da64044b2d.js": "/Roulette/precache-manifest.16b6426acaa870dd658df8da64044b2d.js",
+    "precache-manifest.65b54148cabd4694b2c439199540b74b.js": "/Roulette/precache-manifest.65b54148cabd4694b2c439199540b74b.js",
     "service-worker.js": "/Roulette/service-worker.js",
-    "static/css/main.b7811ef9.chunk.css.map": "/Roulette/static/css/main.b7811ef9.chunk.css.map",
+    "static/css/main.3eb2ea4a.chunk.css.map": "/Roulette/static/css/main.3eb2ea4a.chunk.css.map",
     "static/js/2.67f51ea6.chunk.js.LICENSE": "/Roulette/static/js/2.67f51ea6.chunk.js.LICENSE",
     "static/media/pencils.svg": "/Roulette/static/media/pencils.a0867292.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.717b1951.js",
     "static/js/2.67f51ea6.chunk.js",
-    "static/css/main.b7811ef9.chunk.css",
-    "static/js/main.eec0505a.chunk.js"
+    "static/css/main.3eb2ea4a.chunk.css",
+    "static/js/main.e17b6060.chunk.js"
   ]
 }
