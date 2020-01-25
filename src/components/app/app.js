@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 class App extends Component {
   state = {
     openModalWithPrize: false,
-    openModalInventory: false
+    openModalInventory: false,
+    widthItem: null
   };
+  item = React.createRef();
+  componentDidMount() {
+    this.setState({ widthItem: document.querySelector('.item').offsetWidth });
+  }
   modal = title => info => stateModal => {
     return (
       <>
@@ -33,7 +38,7 @@ class App extends Component {
       rouletteScrolled,
       inventory
     } = this.props;
-    const { openModalWithPrize, openModalInventory } = this.state;
+    const { openModalWithPrize, openModalInventory, widthItem } = this.state;
     const roulette = items
       ? items.map(({ component }, key) => {
           return <Fragment key={key}>{component}</Fragment>;
@@ -50,6 +55,12 @@ class App extends Component {
         this.setState({ openModalWithPrize: true });
       }, 4000);
     }
+    const style = {
+      transform: `translateX(-${widthItem * 15 +
+        (widthItem - widthItem / 3)}px)`,
+      transition: `all 4s`
+    };
+    console.log(widthItem - widthItem / 3);
     return (
       <div className="container">
         <div className="roulette">
@@ -57,9 +68,18 @@ class App extends Component {
             src="https://image.flaticon.com/icons/svg/892/892623.svg"
             alt="arrow"
             className="roulette__arrow-down"
-          ></img>
-          <div className={`items ${spin ? 'items_active' : ''}`}>
-            {roulette}
+          />
+          <div className="roulette__window">
+            <div
+              className="items"
+              style={
+                spin
+                  ? style
+                  : { transform: `translateX(-${widthItem - widthItem / 3}px)` }
+              }
+            >
+              {roulette}
+            </div>
           </div>
         </div>
         <div className="roulette__buttons">
@@ -88,11 +108,14 @@ class App extends Component {
             inventory.map(value => {
               return (
                 <div className="modal__name">
-                  {value.name} {value.amount > 2 ? `(${value.amount})` : null}
+                  {value.name} {value.amount > 1 ? `(${value.amount})` : null}
                 </div>
               );
             })
           )('openModalInventory')}
+        <div className="turn-screen">
+          <div className="turn-screen__text">Переверните устройство</div>
+        </div>
       </div>
     );
   }
