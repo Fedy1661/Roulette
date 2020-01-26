@@ -5,13 +5,8 @@ import { connect } from 'react-redux';
 class App extends Component {
   state = {
     openModalWithPrize: false,
-    openModalInventory: false,
-    widthItem: null
+    openModalInventory: false
   };
-  item = React.createRef();
-  componentDidMount() {
-    this.setState({ widthItem: document.querySelector('.item').offsetWidth });
-  }
   modal = title => info => stateModal => {
     return (
       <>
@@ -38,7 +33,7 @@ class App extends Component {
       rouletteScrolled,
       inventory
     } = this.props;
-    const { openModalWithPrize, openModalInventory, widthItem } = this.state;
+    const { openModalWithPrize, openModalInventory } = this.state;
     const roulette = items
       ? items.map(({ component }, key) => {
           return <Fragment key={key}>{component}</Fragment>;
@@ -55,12 +50,10 @@ class App extends Component {
         this.setState({ openModalWithPrize: true });
       }, 4000);
     }
-    const style = {
-      transform: `translateX(-${widthItem * 15 +
-        (widthItem - widthItem / 3)}px)`,
+    const spinStyle = {
+      transform: `translateX(-${300 * 15 + 200}px)`,
       transition: `all 4s`
     };
-    console.log(widthItem - widthItem / 3);
     return (
       <div className="container">
         <div className="roulette">
@@ -72,11 +65,7 @@ class App extends Component {
           <div className="roulette__window">
             <div
               className="items"
-              style={
-                spin
-                  ? style
-                  : { transform: `translateX(-${widthItem - widthItem / 3}px)` }
-              }
+              style={spin ? spinStyle : { transform: `translateX(-${200}px)` }}
             >
               {roulette}
             </div>
@@ -105,9 +94,9 @@ class App extends Component {
         {prize}
         {openModalInventory &&
           this.modal('Инвентарь')(
-            inventory.map(value => {
+            inventory.map((value, key) => {
               return (
-                <div className="modal__name">
+                <div key={value.id} className="modal__name">
                   {value.name} {value.amount > 1 ? `(${value.amount})` : null}
                 </div>
               );

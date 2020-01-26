@@ -3,7 +3,6 @@ import {
   BlackCat,
   RedCat,
   WhiteCat,
-  Pencils,
   CowBrown,
   CowWhite,
   Pig,
@@ -19,22 +18,21 @@ import {
 } from './components/items';
 import { GENERATE_ROULETTE, ROULETTE_SCOLLED } from './actions';
 const items = [
-  { component: <BlackCat />, name: 'Чёрная кошка' },
-  { component: <WhiteCat />, name: 'Белая кошка' },
-  { component: <RedCat />, name: 'Красная кошка' },
-  { component: <Pencils />, name: 'Принадлежности' },
-  { component: <CowBrown />, name: 'Коричневая корова' },
-  { component: <CowWhite />, name: 'Белая корова' },
-  { component: <Pig />, name: 'Свинья' },
-  { component: <Cigarette />, name: 'Сигарета' },
-  { component: <PackOfCigarettes />, name: 'Пачка сигарет' },
-  { component: <Champange />, name: 'Шампанское' },
-  { component: <Corkscrew />, name: 'Штопор' },
-  { component: <Grapes />, name: 'Виноград' },
-  { component: <Modem />, name: 'Модем' },
-  { component: <Money />, name: 'Купюра 100$' },
-  { component: <MoneyBag />, name: 'Мешок с 100.000$' },
-  { component: <Scooter />, name: 'Скутер' }
+  { component: <BlackCat />, name: 'Чёрная кошка', id: 1 },
+  { component: <WhiteCat />, name: 'Белая кошка', id: 2 },
+  { component: <RedCat />, name: 'Красная кошка', id: 3 },
+  { component: <CowBrown />, name: 'Коричневая корова', id: 4 },
+  { component: <CowWhite />, name: 'Белая корова', id: 5 },
+  { component: <Pig />, name: 'Свинья', id: 6 },
+  { component: <Cigarette />, name: 'Сигарета', id: 7 },
+  { component: <PackOfCigarettes />, name: 'Пачка сигарет', id: 8 },
+  { component: <Champange />, name: 'Шампанское', id: 9 },
+  { component: <Corkscrew />, name: 'Штопор', id: 10 },
+  { component: <Grapes />, name: 'Виноград', id: 11 },
+  { component: <Modem />, name: 'Модем', id: 12 },
+  { component: <Money />, name: 'Купюра 100$', id: 13 },
+  { component: <MoneyBag />, name: 'Мешок с 100.000$', id: 14 },
+  { component: <Scooter />, name: 'Скутер', id: 15 }
 ];
 
 const generateRoulette = count => {
