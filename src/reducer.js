@@ -44,16 +44,6 @@ const generateRoulette = count => {
   return arr;
 };
 
-const findNameItem = (inv, itemName) => {
-  let find = false;
-  inv.forEach(({ name }, key) => {
-    if (name === itemName) {
-      find = key;
-    }
-  });
-  return find;
-};
-
 const initialState = {
   items: [...generateRoulette(3)],
   spin: false,
@@ -66,10 +56,9 @@ export default (state = initialState, { type, payload }) => {
     case GENERATE_ROULETTE:
       const arr = [...state.items, ...generateRoulette(15)];
       let wonItem = arr[arr.length - 2];
-      const findName = findNameItem(state.inventory, wonItem.name);
-      const wonItemIndex =
-        findName !== false ? findName : state.inventory.length;
-      if (findName !== false) {
+      const findName = state.inventory.findIndex(i => i.name === wonItem.name);
+      const wonItemIndex = findName !== -1 ? findName : state.inventory.length;
+      if (findName !== -1) {
         wonItem = state.inventory[wonItemIndex];
         wonItem.amount += 1;
       } else {
